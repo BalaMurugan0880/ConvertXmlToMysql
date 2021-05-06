@@ -9,9 +9,9 @@ $xml = simplexml_load_file("goodnewsimage.xml") or die("Error: Cannot create obj
 foreach ($xml->xpath('//item') as $item) {
 
     $thumbnail = $item->guid;
-    $post_id = $item->post_parent;
+    $post_id = $item->post_id;
 
-     $sqlupdatepost =  "UPDATE posts SET thumbnail='".$thumbnail."' WHERE id='".$post_id."'";
+     $sqlupdatepost =  "UPDATE posts SET thumbnail='".$thumbnail."' WHERE thumbnail_id='".$post_id."'";
 
      $result4 = mysqli_query($conn, $sqlupdatepost);
     
@@ -36,48 +36,49 @@ foreach ($xml->xpath('//item') as $item) {
     //     $post_type = $item->post_type;
     //     $post_id = $item->post_id;
     //     $link = $item->link;
-    //     $pubDate = $item->pubDate;
+    //     $pubDate = $item->post_date;
     //     $user_id =   $user_id;
     //     $content =  $convertContent;
     //     $is_published1 =  $is_published;
     //     $slug = $item->post_name;
+    //     $thumbnail_id = $item->thumbnail_id;
     //     $mainModule_id = 1;//goodnews = 1, bac360 = 2
     //     $category_name = $item->category['nicename'];
 
 
     
-    //     // $sql = "INSERT INTO posts(id,mainModule_id,title,slug,created_at,user_id,details,post_type,is_published) VALUES ('" . $post_id . "','" . $mainModule_id . "','" . $title . "','" . $slug . "','" . $pubDate . "','" . $user_id . "','" . $content . "','" . $post_type . "','" . $is_published1 . "')"; 
+    //     $sql = "INSERT INTO posts(id,mainModule_id,title,slug,created_at,user_id,details,post_type,thumbnail_id,is_published) VALUES ('" . $post_id . "','" . $mainModule_id . "','" . $title . "','" . $slug . "','" . $pubDate . "','" . $user_id . "','" . $content . "','" . $post_type . "','" . $thumbnail_id . "','" . $is_published1 . "')"; 
 
-    //     // $sql2 = "INSERT INTO categories(mainmodule_id,category_name,category_slug,is_published,user_id) VALUES ('" . $mainModule_id ."','" . $category_name ."','" . $category_name ."','" . $is_published1 ."','" . $user_id ."')";
+        // $sql2 = "INSERT INTO categories(mainmodule_id,category_name,category_slug,is_published,user_id) VALUES ('" . $mainModule_id ."','" . $category_name ."','" . $category_name ."','" . $is_published1 ."','" . $user_id ."')";
 
-    //     $sqlgetcategoryid =  "SELECT id FROM categories WHERE category_name = '".$category_name."'";
+        // $sqlgetcategoryid =  "SELECT id FROM categories WHERE category_name = '".$category_name."'";
 
-    //     $get_categoryid = $conn->query($sqlgetcategoryid);
-    //     $rowcount2=mysqli_num_rows($get_categoryid);
-    //     $result_assoc2 = $get_categoryid->fetch_assoc();
+        // $get_categoryid = $conn->query($sqlgetcategoryid);
+        // $rowcount2=mysqli_num_rows($get_categoryid);
+        // $result_assoc2 = $get_categoryid->fetch_assoc();
 
-    //     foreach ($result_assoc2 as $category_id) {
+        // foreach ($result_assoc2 as $category_id) {
 
-    //         $cat_id = $category_id;
+        //     $cat_id = $category_id;
 
-    //          $sql3 = "INSERT INTO category_posts(category_id,post_id) VALUES ('" . $cat_id ."','" . $post_id ."')";
+        //      $sql3 = "INSERT INTO category_posts(category_id,post_id) VALUES ('" . $cat_id ."','" . $post_id ."')";
 
-    //          $result3 = mysqli_query($conn, $sql3);
+        //      $result3 = mysqli_query($conn, $sql3);
 
-    //     }
+        // }
 
        
 
 
         
-    //     // $result = mysqli_query($conn, $sql);
-    //     // $result2 = mysqli_query($conn, $sql2);
+        // $result = mysqli_query($conn, $sql);
+        // $result2 = mysqli_query($conn, $sql2);
 
 
 
 
         
-        if (! empty($result4)) {
+        if (! empty($result2)) {
             $affectedRow ++;
         } else {
             $error_message = mysqli_error($conn) . "\n";
