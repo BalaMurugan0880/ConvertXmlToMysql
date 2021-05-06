@@ -1,3 +1,3 @@
 # ConvertXmlToMysql
 
-##Convert Wordpress blog xml file to custom mysql table
+#Convert Wordpress blog xml file to custom mysql table
